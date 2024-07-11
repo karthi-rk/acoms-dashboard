@@ -35,6 +35,10 @@
   <link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="assets/js/auth.js"></script>
+
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
@@ -349,7 +353,9 @@
         $.ajax({
           url: 'https://acoms2024chennai.creativetec.in/events', // Update with your actual endpoint for updating event data
           type: 'PUT',
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json", "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImthcnRoaWtAY3JlYXRpdmV0ZWMuaW4ifQ.uX4wfhUkcy7W23BTnjAquTsfayCIxaT364sJnhCk29s"
+          },
           data: JSON.stringify(updatedData),
           success: function (response) {
             // Handle success response
