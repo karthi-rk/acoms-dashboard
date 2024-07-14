@@ -89,21 +89,22 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="././index.html">
+          <a class="nav-link text-white  " href="././index.html">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link text-white " href="./tables.html">
+        <li class="nav-item">
+          <a class="nav-link text-white active bg-gradient-primary" href="./events.html">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
-            <span class="nav-link-text ms-1">Tables</span>
+            <span class="nav-link-text ms-1">Events</span>
           </a>
         </li>
+        <!-- 
         <li class="nav-item">
           <a class="nav-link text-white " href="./billing.html">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -133,7 +134,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">notifications</i>
             </div>
-            <span class="nav-link-text ms-1">Notifications</span>
+            <span class="nav-link-text ms-1">Announcements</span>
           </a>
         </li>
         <!-- <li class="nav-item mt-3">
@@ -244,6 +245,11 @@
   </script>
   <script>
     $(document).ready(function () {
+      $('body').on("click", '.closeModal', function () {
+        $("#editEventForm")[0].reset()
+        $('#editEventModal').modal('hide');
+      })
+
       var table = $('#eventsTable').DataTable({
         "ajax": {
           "url": "https://acoms2024chennai.creativetec.in/events",
@@ -360,6 +366,7 @@
           success: function (response) {
             // Handle success response
             $('#editEventModal').modal('hide');
+            $("#editEventForm")[0].reset()
             table.ajax.reload();
           },
           error: function (xhr, status, error) {
@@ -386,7 +393,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="editEventModalLabel">Edit Event</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close closeModal" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -412,7 +419,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary closeModal" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary" id="saveEventButton">Save changes</button>
         </div>
       </div>

@@ -66,6 +66,14 @@
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="./events.html">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">table_view</i>
+            </div>
+            <span class="nav-link-text ms-1">Events</span>
+          </a>
+        </li>
         <!-- <li class="nav-item">
           <a class="nav-link text-white " href="./tables.html">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -280,8 +288,18 @@
       </div>
     </nav> -->
     <!-- End Navbar -->
-    <div class="container-fluid py-4 mt-4">
-      <div class="row">
+    <style>
+      .hide {
+        display: none;
+      }
+    </style>
+    <div class="container-fluid py-4 mt-4" style="
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+">
+      <div class="row show">
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
@@ -355,7 +373,7 @@
           </div>
         </div>
       </div>
-      <div class="row mt-4">
+      <div class="row mt-4 hide">
         <div class="col-lg-4 col-md-6 mt-4 mb-4">
           <div class="card z-index-2 ">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
@@ -417,7 +435,7 @@
           </div>
         </div>
       </div>
-      <div class="row mb-4">
+      <div class="row mb-4 hide">
         <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
           <div class="card">
             <div class="card-header pb-0">
@@ -799,7 +817,7 @@
                   document.write(new Date().getFullYear())
                 </script>,
                 made with <i class="fa fa-heart"></i> by
-                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+                <a href="https://creativetec.in" class="font-weight-bold" target="_blank">Creative Tech</a>
                 for a better web.
               </div>
             </div>
