@@ -44,6 +44,8 @@
   <!-- Nepcha Analytics (nepcha.com)ss -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -62,7 +64,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="././index.html">
+          <a class="nav-link text-white" href="././index.html">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
@@ -78,7 +80,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="./feedback.html">
+          <a class="nav-link text-white active bg-gradient-primary" href="./feedback.html">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -202,79 +204,18 @@
     height: 100vh;
     justify-content: space-between;
 ">
+
       <div class="row show">
-        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-              <div
-                class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">weekend</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Total Events</p>
-                <h4 class="mb-0 total_number_of_events">0</h4>
-              </div>
-            </div>
-            <!-- <hr class="dark horizontal my-0"> -->
-            <div class="card-footer p-3">
-              <!-- <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than last week</p> -->
-            </div>
-          </div>
+        <div class="col-xl-1 col-sm-6 mb-xl-0 mb-5">
         </div>
-        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-              <div
-                class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">person</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Events Added By Users</p>
-                <h4 class="mb-0 total_number_of_events_added">0</h4>
-              </div>
-            </div>
-            <!-- <hr class="dark horizontal my-0"> -->
-            <div class="card-footer p-3">
-              <!-- <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+3% </span>than last month</p> -->
-            </div>
-          </div>
+        <div class="col-xl-5 col-sm-6 mb-xl-0 mb-5">
+          <canvas id="feedbackPieChart" width="400" height="200"></canvas>
         </div>
-        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-              <div
-                class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">person</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Users Attended</p>
-                <h4 class="mb-0 total_number_of_events_attended">0</h4>
-              </div>
-            </div>
-            <!-- <hr class="dark horizontal my-0"> -->
-            <div class="card-footer p-3">
-              <!-- <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">-2%</span> than yesterday</p> -->
-            </div>
-          </div>
-        </div>
-        <!-- <div class="col-xl-3 col-sm-6">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-              <div
-                class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">weekend</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Sales</p>
-                <h4 class="mb-0">$103,430</h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-              <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+5% </span>than yesterday</p>
-            </div>
-          </div>
+        <!-- <div class="col-xl-1 col-sm-6 mb-xl-0 mb-5">
         </div> -->
+        <div class="col-xl-6 col-sm-6 mb-xl-0 mb-5">
+          <canvas id="feedbackBarChart" width="400" height="200"></canvas>
+        </div>
       </div>
       <div class="row mt-4 hide">
         <div class="col-lg-4 col-md-6 mt-4 mb-4">
@@ -715,7 +656,7 @@
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Event Attendance</h6>
+                <h6 class="text-white text-capitalize ps-3">Feedback Report</h6>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -723,14 +664,13 @@
                 <table id="eventsTable" class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Event Id</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Event Name</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Feedback Name</th>
                       <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Type</th> -->
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Code</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Average
+                        Rating</th>
                       <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th> -->
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">User Added
-                      </th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">User Attended
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total
+                        Responses
                       </th>
 
                     </tr>
@@ -790,283 +730,173 @@
   <script src="./assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="./assets/js/plugins/chartjs.min.js"></script>
   <script>
-    var ctx = document.getElementById("chart-bars").getContext("2d");
 
-    new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels: ["M", "T", "W", "T", "F", "S", "S"],
-        datasets: [{
-          label: "Sales",
-          tension: 0.4,
-          borderWidth: 0,
-          borderRadius: 4,
-          borderSkipped: false,
-          backgroundColor: "rgba(255, 255, 255, .8)",
-          data: [50, 20, 10, 22, 50, 10, 40],
-          maxBarThickness: 6
-        },],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false,
-          }
+    async function fetchFeedbackData() {
+      // Replace with your API endpoint
+      const response = await fetch('https://acoms2024chennai.creativetec.in/getFeedbackReport', {
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImthcnRoaWtAY3JlYXRpdmV0ZWMuaW4ifQ.uX4wfhUkcy7W23BTnjAquTsfayCIxaT364sJnhCk29s"
         },
-        interaction: {
-          intersect: false,
-          mode: 'index',
-        },
-        scales: {
-          y: {
-            grid: {
-              drawBorder: false,
-              display: true,
-              drawOnChartArea: true,
-              drawTicks: false,
-              borderDash: [5, 5],
-              color: 'rgba(255, 255, 255, .2)'
+      });
+      return response.json();
+    }
+
+
+
+    function getRandomColorWithOpacity(opacity) {
+      const r = Math.floor(Math.random() * 255);
+      const g = Math.floor(Math.random() * 255);
+      const b = Math.floor(Math.random() * 255);
+      return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+    }
+
+    async function createBarChart() {
+      const data = await fetchFeedbackData();
+      const labels = data.map(item => item.feedback_name);
+      const averageRatings = data.map(item => item.average_rating);
+      const totalResponses = data.map(item => item.total_responses);
+
+      const ctx = document.getElementById('feedbackBarChart').getContext('2d');
+      const feedbackChart = new Chart(ctx, {
+        type: 'bar',
+
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Average Rating',
+              data: averageRatings,
+              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              borderColor: 'rgba(54, 162, 235, 1)',
+              borderWidth: 1,
+              yAxisID: 'y',
             },
-            ticks: {
-              suggestedMin: 0,
-              suggestedMax: 500,
+            {
+              label: 'Total Responses',
+              data: totalResponses,
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 1,
+              yAxisID: 'y1',
+            }
+          ]
+        },
+        options: {
+          maintainAspectRatio: false,
+          layout: {
+            padding: {
+              top: 20,    // Increase space above the chart
+              bottom: 20  // Increase space below the chart
+            }
+          },
+          scales: {
+            y: {
               beginAtZero: true,
-              padding: 10,
-              font: {
-                size: 14,
-                weight: 300,
-                family: "Roboto",
-                style: 'normal',
-                lineHeight: 2
+              position: 'left',
+              title: {
+                display: true,
+                text: 'Average Rating'
               },
-              color: "#fff"
+              ticks: {
+                // Adjust the suggested max value to give more height
+                suggestedMax: Math.max(...averageRatings) * 5
+              }
             },
-          },
-          x: {
-            grid: {
-              drawBorder: false,
-              display: true,
-              drawOnChartArea: true,
-              drawTicks: false,
-              borderDash: [5, 5],
-              color: 'rgba(255, 255, 255, .2)'
+            x: {
+              ticks: {
+                display: false // Hide the x-axis labels
+              }
             },
-            ticks: {
-              display: true,
-              color: '#f8f9fa',
-              padding: 10,
-              font: {
-                size: 14,
-                weight: 300,
-                family: "Roboto",
-                style: 'normal',
-                lineHeight: 2
+            y1: {
+              beginAtZero: true,
+              position: 'right',
+              title: {
+                display: true,
+                text: 'Total Responses'
               },
+              ticks: {
+                // Adjust the suggested max value to give more height
+                suggestedMax: Math.max(...averageRatings) * 5
+              },
+              grid: {
+                drawOnChartArea: true
+              }
             }
-          },
-        },
-      },
-    });
-
-
-    var ctx2 = document.getElementById("chart-line").getContext("2d");
-
-    new Chart(ctx2, {
-      type: "line",
-      data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        datasets: [{
-          label: "Mobile apps",
-          tension: 0,
-          borderWidth: 0,
-          pointRadius: 5,
-          pointBackgroundColor: "rgba(255, 255, 255, .8)",
-          pointBorderColor: "transparent",
-          borderColor: "rgba(255, 255, 255, .8)",
-          borderColor: "rgba(255, 255, 255, .8)",
-          borderWidth: 4,
-          backgroundColor: "transparent",
-          fill: true,
-          data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
-          maxBarThickness: 6
-
-        }],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false,
           }
         },
-        interaction: {
-          intersect: false,
-          mode: 'index',
-        },
-        scales: {
-          y: {
-            grid: {
-              drawBorder: false,
-              display: true,
-              drawOnChartArea: true,
-              drawTicks: false,
-              borderDash: [5, 5],
-              color: 'rgba(255, 255, 255, .2)'
-            },
-            ticks: {
-              display: true,
-              color: '#f8f9fa',
-              padding: 10,
-              font: {
-                size: 14,
-                weight: 300,
-                family: "Roboto",
-                style: 'normal',
-                lineHeight: 2
-              },
-            }
-          },
-          x: {
-            grid: {
-              drawBorder: false,
-              display: false,
-              drawOnChartArea: false,
-              drawTicks: false,
-              borderDash: [5, 5]
-            },
-            ticks: {
-              display: true,
-              color: '#f8f9fa',
-              padding: 10,
-              font: {
-                size: 14,
-                weight: 300,
-                family: "Roboto",
-                style: 'normal',
-                lineHeight: 2
-              },
-            }
-          },
-        },
-      },
-    });
-
-    var ctx3 = document.getElementById("chart-line-tasks").getContext("2d");
-
-    new Chart(ctx3, {
-      type: "line",
-      data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        datasets: [{
-          label: "Mobile apps",
-          tension: 0,
-          borderWidth: 0,
-          pointRadius: 5,
-          pointBackgroundColor: "rgba(255, 255, 255, .8)",
-          pointBorderColor: "transparent",
-          borderColor: "rgba(255, 255, 255, .8)",
-          borderWidth: 4,
-          backgroundColor: "transparent",
-          fill: true,
-          data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-          maxBarThickness: 6
-
-        }],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
         plugins: {
           legend: {
-            display: false,
+            display: true // Hide the legend
           }
+        }
+      });
+    }
+    async function createPieChart() {
+      const data = await fetchFeedbackData();
+
+      const labels = data.map(item => item.feedback_name);
+      const averageRatings = data.map(item => item.average_rating);
+      const backgroundColors = data.map(() => getRandomColorWithOpacity(0.2));
+      const borderColors = data.map((_, index) => {
+        const bgColor = backgroundColors[index];
+        return bgColor.replace('0.2', '1');
+      });
+
+      const ctx = document.getElementById('feedbackPieChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: labels,
+          datasets: [{
+            data: averageRatings,
+            backgroundColor: backgroundColors,
+            borderColor: borderColors,
+            borderWidth: 1
+          }]
         },
-        interaction: {
-          intersect: false,
-          mode: 'index',
-        },
-        scales: {
-          y: {
-            grid: {
-              drawBorder: false,
-              display: true,
-              drawOnChartArea: true,
-              drawTicks: false,
-              borderDash: [5, 5],
-              color: 'rgba(255, 255, 255, .2)'
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              display: true
             },
-            ticks: {
+            title: {
               display: true,
-              padding: 10,
-              color: '#f8f9fa',
-              font: {
-                size: 14,
-                weight: 300,
-                family: "Roboto",
-                style: 'normal',
-                lineHeight: 2
-              },
-            }
-          },
-          x: {
-            grid: {
-              drawBorder: false,
-              display: false,
-              drawOnChartArea: false,
-              drawTicks: false,
-              borderDash: [5, 5]
+              text: 'Average Feedback Ratings'
             },
-            ticks: {
-              display: true,
-              color: '#f8f9fa',
-              padding: 10,
-              font: {
-                size: 14,
-                weight: 300,
-                family: "Roboto",
-                style: 'normal',
-                lineHeight: 2
-              },
-            }
-          },
-        },
-      },
-    });
+          }
+        }
+      });
+    }
+
+    createPieChart();
+    createBarChart();
   </script>
   <script>
     $(document).ready(function () {
 
       var table = $('#eventsTable').DataTable({
         "ajax": {
-          "url": "https://acoms2024chennai.creativetec.in/events/getEventAttendance",
+          "url": "https://acoms2024chennai.creativetec.in/getFeedbackReport",
           "dataSrc": "",
           "headers": {
             "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImthcnRoaWtAY3JlYXRpdmV0ZWMuaW4ifQ.uX4wfhUkcy7W23BTnjAquTsfayCIxaT364sJnhCk29s"
           },
         },
         "columns": [
-          { "data": "id" },
-          { "data": "name" },
-          { "data": "event_code" },
-          // { "data": "event_code" },
-          // { "data": "description" },
-          { "data": "total_number_of_event_added" },
-          { "data": "total_number_of_event_attended" },
+          { "data": "feedback_name" },
+          { "data": "average_rating" },
+          { "data": "total_responses" },
         ],
         "createdRow": function (row, data, dataIndex) {
           var codeCell = $(row).find('td:eq(0)');
-          codeCell.html('<p class="text-xs mb-0">' + data.id + '</p>');
-          // Custom HTML structure for the first column
-          var nameCell = $(row).find('td:eq(1)');
-          nameCell.html('<div class="d-flex px-2 py-1">' +
+          codeCell.html('<div class="d-flex px-2 py-1">' +
             '<div>' +
             // '<img src="./assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">' +
             '</div>' +
             '<div class="d-flex flex-column justify-content-center">' +
-            '<p class="mb-0 text-sm">' + data.name + '</p>' +
+            '<p class="mb-0 text-sm">' + data.feedback_name + '</p>' +
             '</div>' +
             '</div>');
 
@@ -1076,20 +906,20 @@
           // );
 
           // Custom HTML structure for the third column
-          var codeCell = $(row).find('td:eq(2)');
-          codeCell.html('<p class="text-xs mb-0">' + data.event_code + '</p>');
+          var codeCell = $(row).find('td:eq(1)');
+          codeCell.html('<p class="text-xs mb-0">' + data.average_rating + '</p>');
 
           // Custom HTML structure for the fourth column
           // var descriptionCell = $(row).find('td:eq(3)');
           // descriptionCell.html(data.description);
 
           // Custom HTML structure for the fifth column
-          var startTimeCell = $(row).find('td:eq(3)');
-          startTimeCell.html('<p class="text-xs mb-0">' + data.total_number_of_event_added + '</p>');
+          var startTimeCell = $(row).find('td:eq(2)');
+          startTimeCell.html('<p class="text-xs mb-0">' + data.total_responses + '</p>');
 
           // Custom HTML structure for the sixth column
-          var endTimeCell = $(row).find('td:eq(4)');
-          endTimeCell.html('<p class="text-xs mb-0">' + data.total_number_of_event_attended + '</p>');
+          // var endTimeCell = $(row).find('td:eq(4)');
+          // endTimeCell.html('<p class="text-xs mb-0">' + data.total_number_of_event_attended + '</p>');
 
           // Custom HTML structure for the seventh column
           // var locationCell = $(row).find('td:eq(5)');
@@ -1102,7 +932,6 @@
         "headerCallback": function (thead, data, start, end, display) {
           $(thead).find('th').addClass('text-uppercase text-secondary text-xxs font-weight-bolder opacity-7');
         },
-        order: [[4, 'desc']]
       });
       $.ajax({
         url: 'https://acoms2024chennai.creativetec.in/events/getAttendanceReport', // Update with your actual endpoint for updating event data
