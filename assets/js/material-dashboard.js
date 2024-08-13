@@ -219,15 +219,15 @@ function sidebarType(a) {
     var navbarBrand = document.querySelector('.navbar-brand-img');
     var navbarBrandImg = navbarBrand.src;
 
-    if (navbarBrandImg.includes('logo-ct.png')) {
-      var navbarBrandImgNew = navbarBrandImg.replace("logo-ct", "logo-ct-dark");
+    if (navbarBrandImg.includes('logo-home.png')) {
+      var navbarBrandImgNew = navbarBrandImg.replace("logo-home", "logo-home-dark");
       navbarBrand.src = navbarBrandImgNew;
     }
   } else {
     var navbarBrand = document.querySelector('.navbar-brand-img');
     var navbarBrandImg = navbarBrand.src;
-    if (navbarBrandImg.includes('logo-ct-dark.png')) {
-      var navbarBrandImgNew = navbarBrandImg.replace("logo-ct-dark", "logo-ct");
+    if (navbarBrandImg.includes('logo-home-dark.png')) {
+      var navbarBrandImgNew = navbarBrandImg.replace("logo-home-dark", "logo-home");
       navbarBrand.src = navbarBrandImgNew;
     }
   }
@@ -236,8 +236,8 @@ function sidebarType(a) {
     var navbarBrand = document.querySelector('.navbar-brand-img');
     var navbarBrandImg = navbarBrand.src;
 
-    if (navbarBrandImg.includes('logo-ct.png')) {
-      var navbarBrandImgNew = navbarBrandImg.replace("logo-ct", "logo-ct-dark");
+    if (navbarBrandImg.includes('logo-home.png')) {
+      var navbarBrandImgNew = navbarBrandImg.replace("logo-home", "logo-home-dark");
       navbarBrand.src = navbarBrandImgNew;
     }
   }
