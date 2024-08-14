@@ -219,16 +219,17 @@
                 <table id="eventsTable" class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Event Id</th> -->
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Event Name</th>
-                      <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Type</th> -->
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Code</th>
-                      <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th> -->
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">User Added
+                      <!-- <th class="text-uppercase text-xxs font-weight-bolder opacity-7">Event Id</th> -->
+                      <th class="text-uppercase text-xxs font-weight-bolder opacity-7">Event Name</th>
+                      <!-- <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Type</th> -->
+                      <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Code</th>
+                      <!-- <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Description</th> -->
+                      <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">User Added
                       </th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">User Attended
+                      <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">User Attended
                       </th>
-
+                      <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Action
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -280,253 +281,7 @@
   <script src="./assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="./assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="./assets/js/plugins/chartjs.min.js"></script>
-  <script>
-    var ctx = document.getElementById("chart-bars").getContext("2d");
 
-    new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels: ["M", "T", "W", "T", "F", "S", "S"],
-        datasets: [{
-          label: "Sales",
-          tension: 0.4,
-          borderWidth: 0,
-          borderRadius: 4,
-          borderSkipped: false,
-          backgroundColor: "rgba(255, 255, 255, .8)",
-          data: [50, 20, 10, 22, 50, 10, 40],
-          maxBarThickness: 6
-        },],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false,
-          }
-        },
-        interaction: {
-          intersect: false,
-          mode: 'index',
-        },
-        scales: {
-          y: {
-            grid: {
-              drawBorder: false,
-              display: true,
-              drawOnChartArea: true,
-              drawTicks: false,
-              borderDash: [5, 5],
-              color: 'rgba(255, 255, 255, .2)'
-            },
-            ticks: {
-              suggestedMin: 0,
-              suggestedMax: 500,
-              beginAtZero: true,
-              padding: 10,
-              font: {
-                size: 14,
-                weight: 300,
-                family: "Roboto",
-                style: 'normal',
-                lineHeight: 2
-              },
-              color: "#fff"
-            },
-          },
-          x: {
-            grid: {
-              drawBorder: false,
-              display: true,
-              drawOnChartArea: true,
-              drawTicks: false,
-              borderDash: [5, 5],
-              color: 'rgba(255, 255, 255, .2)'
-            },
-            ticks: {
-              display: true,
-              color: '#f8f9fa',
-              padding: 10,
-              font: {
-                size: 14,
-                weight: 300,
-                family: "Roboto",
-                style: 'normal',
-                lineHeight: 2
-              },
-            }
-          },
-        },
-      },
-    });
-
-
-    var ctx2 = document.getElementById("chart-line").getContext("2d");
-
-    new Chart(ctx2, {
-      type: "line",
-      data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        datasets: [{
-          label: "Mobile apps",
-          tension: 0,
-          borderWidth: 0,
-          pointRadius: 5,
-          pointBackgroundColor: "rgba(255, 255, 255, .8)",
-          pointBorderColor: "transparent",
-          borderColor: "rgba(255, 255, 255, .8)",
-          borderColor: "rgba(255, 255, 255, .8)",
-          borderWidth: 4,
-          backgroundColor: "transparent",
-          fill: true,
-          data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
-          maxBarThickness: 6
-
-        }],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false,
-          }
-        },
-        interaction: {
-          intersect: false,
-          mode: 'index',
-        },
-        scales: {
-          y: {
-            grid: {
-              drawBorder: false,
-              display: true,
-              drawOnChartArea: true,
-              drawTicks: false,
-              borderDash: [5, 5],
-              color: 'rgba(255, 255, 255, .2)'
-            },
-            ticks: {
-              display: true,
-              color: '#f8f9fa',
-              padding: 10,
-              font: {
-                size: 14,
-                weight: 300,
-                family: "Roboto",
-                style: 'normal',
-                lineHeight: 2
-              },
-            }
-          },
-          x: {
-            grid: {
-              drawBorder: false,
-              display: false,
-              drawOnChartArea: false,
-              drawTicks: false,
-              borderDash: [5, 5]
-            },
-            ticks: {
-              display: true,
-              color: '#f8f9fa',
-              padding: 10,
-              font: {
-                size: 14,
-                weight: 300,
-                family: "Roboto",
-                style: 'normal',
-                lineHeight: 2
-              },
-            }
-          },
-        },
-      },
-    });
-
-    var ctx3 = document.getElementById("chart-line-tasks").getContext("2d");
-
-    new Chart(ctx3, {
-      type: "line",
-      data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        datasets: [{
-          label: "Mobile apps",
-          tension: 0,
-          borderWidth: 0,
-          pointRadius: 5,
-          pointBackgroundColor: "rgba(255, 255, 255, .8)",
-          pointBorderColor: "transparent",
-          borderColor: "rgba(255, 255, 255, .8)",
-          borderWidth: 4,
-          backgroundColor: "transparent",
-          fill: true,
-          data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-          maxBarThickness: 6
-
-        }],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false,
-          }
-        },
-        interaction: {
-          intersect: false,
-          mode: 'index',
-        },
-        scales: {
-          y: {
-            grid: {
-              drawBorder: false,
-              display: true,
-              drawOnChartArea: true,
-              drawTicks: false,
-              borderDash: [5, 5],
-              color: 'rgba(255, 255, 255, .2)'
-            },
-            ticks: {
-              display: true,
-              padding: 10,
-              color: '#f8f9fa',
-              font: {
-                size: 14,
-                weight: 300,
-                family: "Roboto",
-                style: 'normal',
-                lineHeight: 2
-              },
-            }
-          },
-          x: {
-            grid: {
-              drawBorder: false,
-              display: false,
-              drawOnChartArea: false,
-              drawTicks: false,
-              borderDash: [5, 5]
-            },
-            ticks: {
-              display: true,
-              color: '#f8f9fa',
-              padding: 10,
-              font: {
-                size: 14,
-                weight: 300,
-                family: "Roboto",
-                style: 'normal',
-                lineHeight: 2
-              },
-            }
-          },
-        },
-      },
-    });
-  </script>
   <script>
     $(document).ready(function () {
 
@@ -546,6 +301,7 @@
           // { "data": "description" },
           { "data": "total_number_of_event_added" },
           { "data": "total_number_of_event_attended" },
+          { "data": "id" }
         ],
         "createdRow": function (row, data, dataIndex) {
           // var codeCell = $(row).find('td:eq(0)');
@@ -596,16 +352,32 @@
           $(row).find('td:eq(2)').css({ "max-width": "30px", "white-space": "normal", "word-wrap": "break-word" });
           $(row).find('td:eq(3)').css({ "max-width": "30px", "white-space": "normal", "word-wrap": "break-word" });
           $(row).find('td:eq(4)').css({ "max-width": "30px", "white-space": "normal", "word-wrap": "break-word" });
-          $(row).find('td:eq(5)').css({ "max-width": "30px", "white-space": "normal", "word-wrap": "break-word" });
 
-          $(row).find('td:eq(6)').css({ "max-width": "30px", "white-space": "normal", "word-wrap": "break-word" });
-
+          var actionCell = $(row).find('td:eq(4)');
+          actionCell.html('<div class="action"><a href="javascript:;" data-id="' + data.id + '" class="feedback-report text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">Feedback</a><a href="javascript:;" data-id="' + data.id + '" class="poll-report text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">Poll</a></div>');
         },
         "headerCallback": function (thead, data, start, end, display) {
-          $(thead).find('th').addClass('text-uppercase text-secondary text-xxs font-weight-bolder opacity-7');
+          $(thead).find('th').addClass('text-uppercase text-xxs font-weight-bolder opacity-7');
         },
         order: [[3, 'desc']]
       });
+
+      $('#eventsTable tbody').on('click', 'a.feedback-report', function () {
+        $('#feedbackModal').modal('show');
+        var id = $(this).data('id');
+        fetchFeedbackReport(id)
+      });
+      $('#eventsTable tbody').on('click', 'a.poll-report', function () {
+        $('#pollModal').modal('show');
+        var id = $(this).data('id');
+        fetchPollReport(id)
+      });
+
+      $('body').on("click", '.closeModal', function () {
+        $('#pollModal').modal('hide');
+        $('#feedbackModal').modal('hide');
+      })
+
       $.ajax({
         url: 'https://acoms2024chennai.creativetec.in/events/getAttendanceReport', // Update with your actual endpoint for updating event data
         type: 'GET',
@@ -626,6 +398,134 @@
           console.error(error);
         }
       });
+
+
+      // feedbackrepot
+
+      async function fetchFeedbackReport(params) {
+        $("#feedbackTable").dataTable().fnDestroy()
+        var table = $('#feedbackTable').DataTable({
+          "ajax": {
+            "url": "https://acoms2024chennai.creativetec.in/getFeedbackReport?id=" + params,
+            "dataSrc": "",
+            "headers": {
+              "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImthcnRoaWtAY3JlYXRpdmV0ZWMuaW4ifQ.uX4wfhUkcy7W23BTnjAquTsfayCIxaT364sJnhCk29s"
+            },
+          },
+          searching: false, paging: false, info: false,
+          "columns": [
+            { "data": "feedback_name" },
+            { "data": "average_rating" },
+            { "data": "total_responses" },
+          ],
+          "createdRow": function (row, data, dataIndex) {
+            var codeCell = $(row).find('td:eq(0)');
+            codeCell.html('<div class="d-flex px-2 py-1">' +
+              '<div>' +
+              // '<img src="./assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">' +
+              '</div>' +
+              '<div class="d-flex flex-column justify-content-center">' +
+              '<p class="mb-0 text-sm">' + data.feedback_name + '</p>' +
+              '</div>' +
+              '</div>');
+
+            // Custom HTML structure for the second column
+            // var typeCell = $(row).find('td:eq(2)');
+            // typeCell.html('<p class="text-xs mb-0">' + data.event_type + '</p>'
+            // );
+
+            // Custom HTML structure for the third column
+            var codeCell = $(row).find('td:eq(1)');
+            codeCell.html('<p class="text-xs mb-0">' + data.average_rating + '</p>');
+
+            // Custom HTML structure for the fourth column
+            // var descriptionCell = $(row).find('td:eq(3)');
+            // descriptionCell.html(data.description);
+
+            // Custom HTML structure for the fifth column
+            var startTimeCell = $(row).find('td:eq(2)');
+            startTimeCell.html('<p class="text-xs mb-0">' + data.total_responses + '</p>');
+
+            // Custom HTML structure for the sixth column
+            // var endTimeCell = $(row).find('td:eq(4)');
+            // endTimeCell.html('<p class="text-xs mb-0">' + data.total_number_of_event_attended + '</p>');
+
+            // Custom HTML structure for the seventh column
+            // var locationCell = $(row).find('td:eq(5)');
+            // locationCell.html('<p class="text-xs mb-0">' + data.location + '</p>');
+
+            // var actionCell = $(row).find('td:eq(6)');
+            // actionCell.html('<a href="javascript:;" class="edit-event text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">Edit</a>');
+
+          },
+          "headerCallback": function (thead, data, start, end, display) {
+            $(thead).find('th').addClass('text-uppercase text-xxs font-weight-bolder opacity-7');
+          },
+        });
+      }
+
+      // pollreport
+
+      async function fetchPollReport(params) {
+        var table = $('#pollTable').DataTable({
+          "ajax": {
+            "url": "https://acoms2024chennai.creativetec.in/getFeedbackReport?id=" + params,
+            "dataSrc": "",
+            "headers": {
+              "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImthcnRoaWtAY3JlYXRpdmV0ZWMuaW4ifQ.uX4wfhUkcy7W23BTnjAquTsfayCIxaT364sJnhCk29s"
+            },
+          },
+          "columns": [
+            { "data": "feedback_name" },
+            { "data": "average_rating" },
+            { "data": "total_responses" },
+          ],
+          searching: false, paging: false, info: false,
+          "createdRow": function (row, data, dataIndex) {
+            var codeCell = $(row).find('td:eq(0)');
+            codeCell.html('<div class="d-flex px-2 py-1">' +
+              '<div>' +
+              // '<img src="./assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">' +
+              '</div>' +
+              '<div class="d-flex flex-column justify-content-center">' +
+              '<p class="mb-0 text-sm">' + data.feedback_name + '</p>' +
+              '</div>' +
+              '</div>');
+
+            // Custom HTML structure for the second column
+            // var typeCell = $(row).find('td:eq(2)');
+            // typeCell.html('<p class="text-xs mb-0">' + data.event_type + '</p>'
+            // );
+
+            // Custom HTML structure for the third column
+            var codeCell = $(row).find('td:eq(1)');
+            codeCell.html('<p class="text-xs mb-0">' + data.average_rating + '</p>');
+
+            // Custom HTML structure for the fourth column
+            // var descriptionCell = $(row).find('td:eq(3)');
+            // descriptionCell.html(data.description);
+
+            // Custom HTML structure for the fifth column
+            var startTimeCell = $(row).find('td:eq(2)');
+            startTimeCell.html('<p class="text-xs mb-0">' + data.total_responses + '</p>');
+
+            // Custom HTML structure for the sixth column
+            // var endTimeCell = $(row).find('td:eq(4)');
+            // endTimeCell.html('<p class="text-xs mb-0">' + data.total_number_of_event_attended + '</p>');
+
+            // Custom HTML structure for the seventh column
+            // var locationCell = $(row).find('td:eq(5)');
+            // locationCell.html('<p class="text-xs mb-0">' + data.location + '</p>');
+
+            // var actionCell = $(row).find('td:eq(6)');
+            // actionCell.html('<a href="javascript:;" class="edit-event text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">Edit</a>');
+
+          },
+          "headerCallback": function (thead, data, start, end, display) {
+            $(thead).find('th').addClass('text-uppercase text-xxs font-weight-bolder opacity-7');
+          },
+        });
+      }
     });
   </script>
   <script>
@@ -641,6 +541,75 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="./assets/js/material-dashboard.min.js?v=3.1.0"></script>
+
+  <div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="editEventModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editEventModalLabel">Feedback Report</h5>
+          <button type="button" class="close closeModal" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table id="feedbackTable" class="table align-items-center mb-0">
+            <thead>
+              <tr>
+                <th class="text-uppercase text-xxs font-weight-bolder opacity-7">Feedback Name</th>
+                <!-- <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Type</th> -->
+                <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Average
+                  Rating</th>
+                <!-- <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Description</th> -->
+                <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Total
+                  Responses
+                </th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Data will be populated by DataTables -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="pollModal" tabindex="-1" role="dialog" aria-labelledby="editEventModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editEventModalLabel">Edit Event</h5>
+          <button type="button" class="close closeModal" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table id="pollTable" class="table align-items-center mb-0">
+            <thead>
+              <tr>
+                <th class="text-uppercase text-xxs font-weight-bolder opacity-7">Feedback Name</th>
+                <!-- <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Type</th> -->
+                <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Average
+                  Rating</th>
+                <!-- <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Description</th> -->
+                <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Total
+                  Responses
+                </th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Data will be populated by DataTables -->
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

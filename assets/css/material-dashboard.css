@@ -27960,3 +27960,20 @@ a.nav-link.active {
 .text-secondary {
   color: #161a59 !important;
 }
+
+thead tr {
+  background: #151a59;
+  color: white;
+  opacity: 1;
+}
+
+.action {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.modal.show .modal-dialog {
+  transform: none;
+  width: 80%;
+  max-width: 66%;
+}
