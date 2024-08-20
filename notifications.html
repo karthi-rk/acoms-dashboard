@@ -234,15 +234,15 @@
               <table id="eventsTable" class="table align-items-center mb-0">
                 <thead>
                   <tr>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Message</th>
-                    <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Type</th> -->
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Time</th>
-                    <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th> -->
-                    <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Start Time</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">End Time</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Location</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th> -->
+                    <th class="text-uppercase text-xxs font-weight-bolder opacity-7">Id</th>
+                    <th class="text-uppercase text-xxs font-weight-bolder opacity-7">Message</th>
+                    <!-- <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Type</th> -->
+                    <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Time</th>
+                    <!-- <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Description</th> -->
+                    <!-- <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Start Time</th>
+                    <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">End Time</th>
+                    <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Location</th>
+                    <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Action</th> -->
 
                   </tr>
                 </thead>
@@ -350,10 +350,18 @@
 
           // var actionCell = $(row).find('td:eq(6)');
           // actionCell.html('<a href="javascript:;" class="edit-event text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">Edit</a>');
+          $(row).find('td:eq(0)').css({ "max-width": "200px", "white-space": "normal", "word-wrap": "break-word" });
+          $(row).find('td:eq(2)').css({ "max-width": "60px", "white-space": "normal", "word-wrap": "break-word" });
+          $(row).find('td:eq(1)').css({ "max-width": "230px", "white-space": "normal", "word-wrap": "break-word" });
+          $(row).find('td:eq(3)').css({ "max-width": "100px", "white-space": "normal", "word-wrap": "break-word" });
+          $(row).find('td:eq(4)').css({ "max-width": "100px", "white-space": "normal", "word-wrap": "break-word" });
+          $(row).find('td:eq(5)').css({ "max-width": "50px", "white-space": "normal", "word-wrap": "break-word" });
+
+          $(row).find('td:eq(6)').css({ "max-width": "40px", "white-space": "normal", "word-wrap": "break-word" });
 
         },
         "headerCallback": function (thead, data, start, end, display) {
-          $(thead).find('th').addClass('text-uppercase text-secondary text-xxs font-weight-bolder opacity-7');
+          $(thead).find('th').addClass('text-uppercase text-xxs font-weight-bolder opacity-7');
         }
       });
       // $.datetimepicker.setDateFormatter({

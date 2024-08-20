@@ -27977,3 +27977,8 @@ thead tr {
   width: 80%;
   max-width: 66%;
 }
+
+.navbar-brand-img.h-100 {
+  width: 100%;
+  object-fit: contain;
+}
