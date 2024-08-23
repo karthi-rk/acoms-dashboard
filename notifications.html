@@ -42,8 +42,8 @@
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
-  <link id="pagestyle" href="./assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <link id="pagestyle" href="./assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
 
 
 
@@ -190,7 +190,7 @@
       data-scroll="true">
       <div class="container-fluid py-1 px-3">
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-          <h3>Announcement</h3>
+          <!-- <h3>Announcement</h3> -->
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
@@ -234,15 +234,15 @@
               <table id="eventsTable" class="table align-items-center mb-0">
                 <thead>
                   <tr>
-                    <th class="text-uppercase text-xxs font-weight-bolder opacity-7">Id</th>
-                    <th class="text-uppercase text-xxs font-weight-bolder opacity-7">Message</th>
-                    <!-- <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Type</th> -->
-                    <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Time</th>
-                    <!-- <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Description</th> -->
-                    <!-- <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Start Time</th>
-                    <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">End Time</th>
-                    <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Location</th>
-                    <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Action</th> -->
+                    <th class="text-uppercase text-xxs font-weight-bolder ">Id</th>
+                    <th class="text-uppercase text-xxs font-weight-bolder ">Message</th>
+                    <!-- <th class="text-uppercase text-xxs font-weight-bolder  ps-2">Type</th> -->
+                    <th class="text-uppercase text-xxs font-weight-bolder  ps-2">Time</th>
+                    <!-- <th class="text-uppercase text-xxs font-weight-bolder  ps-2">Description</th> -->
+                    <!-- <th class="text-uppercase text-xxs font-weight-bolder  ps-2">Start Time</th>
+                    <th class="text-uppercase text-xxs font-weight-bolder  ps-2">End Time</th>
+                    <th class="text-uppercase text-xxs font-weight-bolder  ps-2">Location</th>
+                    <th class="text-uppercase text-xxs font-weight-bolder  ps-2">Action</th> -->
 
                   </tr>
                 </thead>
@@ -258,7 +258,6 @@
     <style>
       #eventsTable {
         color: black;
-        opacity: 0.8;
       }
 
       .text-secondary {
@@ -361,7 +360,7 @@
 
         },
         "headerCallback": function (thead, data, start, end, display) {
-          $(thead).find('th').addClass('text-uppercase text-xxs font-weight-bolder opacity-7');
+          $(thead).find('th').addClass('text-uppercase text-xxs font-weight-bolder ');
         }
       });
       // $.datetimepicker.setDateFormatter({
