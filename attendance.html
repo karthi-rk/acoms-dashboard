@@ -43,7 +43,7 @@
     src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
   <!-- Nepcha Analytics (nepcha.com)ss -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
-  <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+  <!-- <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script> -->
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -462,18 +462,24 @@
       // pollreport
 
       async function fetchPollReport(params) {
+        $("#pollTable").dataTable().fnDestroy()
         var table = $('#pollTable').DataTable({
           "ajax": {
-            "url": "https://acoms2024chennai.creativetec.in/getFeedbackReport?id=" + params,
+            "url": "https://acoms2024chennai.creativetec.in/getPollReport?id=" + params,
             "dataSrc": "",
             "headers": {
               "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImthcnRoaWtAY3JlYXRpdmV0ZWMuaW4ifQ.uX4wfhUkcy7W23BTnjAquTsfayCIxaT364sJnhCk29s"
             },
           },
           "columns": [
-            { "data": "feedback_name" },
-            { "data": "average_rating" },
+            { "data": "poll_title" },
             { "data": "total_responses" },
+            { "data": "option1_label" },
+            { "data": "option1_count" },
+            { "data": "option2_label" },
+            { "data": "option2_count" },
+            { "data": "option3_label" },
+            { "data": "option3_count" }
           ],
           searching: false, paging: false, info: false,
           "createdRow": function (row, data, dataIndex) {
@@ -483,7 +489,7 @@
               // '<img src="./assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">' +
               '</div>' +
               '<div class="d-flex flex-column justify-content-center">' +
-              '<p class="mb-0 text-sm">' + data.feedback_name + '</p>' +
+              '<p class="mb-0 text-sm">' + data.poll_title + '</p>' +
               '</div>' +
               '</div>');
 
@@ -494,7 +500,7 @@
 
             // Custom HTML structure for the third column
             var codeCell = $(row).find('td:eq(1)');
-            codeCell.html('<p class="text-xs mb-0">' + data.average_rating + '</p>');
+            codeCell.html('<p class="text-xs mb-0">' + data.total_responses + '</p>');
 
             // Custom HTML structure for the fourth column
             // var descriptionCell = $(row).find('td:eq(3)');
@@ -502,7 +508,20 @@
 
             // Custom HTML structure for the fifth column
             var startTimeCell = $(row).find('td:eq(2)');
-            startTimeCell.html('<p class="text-xs mb-0">' + data.total_responses + '</p>');
+            startTimeCell.html('<p class="text-xs mb-0">' + data.option1_label + '</p>');
+            var startTimeCell = $(row).find('td:eq(3)');
+            startTimeCell.html('<p class="text-xs mb-0">' + data.option1_count + '</p>');
+
+            var startTimeCell = $(row).find('td:eq(4)');
+            startTimeCell.html('<p class="text-xs mb-0">' + data.option2_label + '</p>');
+            var startTimeCell = $(row).find('td:eq(5)');
+            startTimeCell.html('<p class="text-xs mb-0">' + data.option3_count + '</p>');
+
+            var startTimeCell = $(row).find('td:eq(6)');
+            startTimeCell.html('<p class="text-xs mb-0">' + data.option3_label + '</p>');
+            var startTimeCell = $(row).find('td:eq(7)');
+            startTimeCell.html('<p class="text-xs mb-0">' + data.option3_count + '</p>');
+
 
             // Custom HTML structure for the sixth column
             // var endTimeCell = $(row).find('td:eq(4)');
@@ -537,8 +556,8 @@
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="./assets/js/material-dashboard.min.js?v=3.1.0"></script>
 
-  <div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="editEventModalLabel"
-    aria-hidden="true">
+  <div class="modal fade" id="feedbackModal" tabindex="-1" style="z-index: 9999;" s role="dialog"
+    aria-labelledby="editEventModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -572,7 +591,7 @@
   </div>
 
   <div class="modal fade" id="pollModal" tabindex="-1" role="dialog" aria-labelledby="editEventModalLabel"
-    aria-hidden="true">
+    style="z-index: 9999;" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -587,11 +606,20 @@
               <tr>
                 <th class="text-uppercase text-xxs font-weight-bolder ">Feedback Name</th>
                 <!-- <th class="text-uppercase text-xxs font-weight-bolder  ps-2">Type</th> -->
-                <th class="text-uppercase text-xxs font-weight-bolder  ps-2">Average
-                  Rating</th>
-                <!-- <th class="text-uppercase text-xxs font-weight-bolder  ps-2">Description</th> -->
                 <th class="text-uppercase text-xxs font-weight-bolder  ps-2">Total
-                  Responses
+                  Responses</th>
+                <!-- <th class="text-uppercase text-xxs font-weight-bolder  ps-2">Description</th> -->
+                <th class="text-uppercase text-xxs font-weight-bolder  ps-2 option1">Option 1 Value
+                </th>
+                <th class="text-uppercase text-xxs font-weight-bolder  ps-2 option1">Option 1 Choosed
+                </th>
+                <th class="text-uppercase text-xxs font-weight-bolder  ps-2 option2">Option 2 Value
+                </th>
+                <th class="text-uppercase text-xxs font-weight-bolder  ps-2 option1">Option 2 Choosed
+                </th>
+                <th class="text-uppercase text-xxs font-weight-bolder  ps-2 option3">Option 3 Value
+                </th>
+                <th class="text-uppercase text-xxs font-weight-bolder  ps-2 option1">Option 3 Choosed
                 </th>
 
               </tr>
