@@ -27970,6 +27970,7 @@ thead tr {
 .action {
   display: flex;
   justify-content: space-evenly;
+  gap: 10px;
 }
 
 .modal.show .modal-dialog {

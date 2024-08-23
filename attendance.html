@@ -196,6 +196,19 @@
       .hide {
         display: none;
       }
+
+      .dataTables_wrapper {
+        overflow: auto;
+      }
+
+      @media (max-width: 576px) {
+
+        .modal.show .modal-dialog {
+          transform: none;
+          width: 100%;
+          max-width: 100%;
+        }
+      }
     </style>
     <div>
 
@@ -346,7 +359,7 @@
           $(row).find('td:eq(1)').css({ "max-width": "60px", "white-space": "normal", "word-wrap": "break-word" });
           $(row).find('td:eq(2)').css({ "max-width": "30px", "white-space": "normal", "word-wrap": "break-word" });
           $(row).find('td:eq(3)').css({ "max-width": "30px", "white-space": "normal", "word-wrap": "break-word" });
-          $(row).find('td:eq(4)').css({ "max-width": "30px", "white-space": "normal", "word-wrap": "break-word" });
+          $(row).find('td:eq(4)').css({ "max-width": "80px", "white-space": "normal", "word-wrap": "break-word" });
 
           var actionCell = $(row).find('td:eq(4)');
           actionCell.html('<div class="action"><a href="javascript:;" data-id="' + data.id + '" class="feedback-report text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">Feedback</a><a href="javascript:;" data-id="' + data.id + '" class="poll-report text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">Poll</a></div>');
